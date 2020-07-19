@@ -1,4 +1,4 @@
-# WebApi-Core-3.0-Boilerplate
+# WebApi-Core-3.1-Boilerplate
 
 Simple C# webapi boilerplate with sql server connection.
 
@@ -7,6 +7,8 @@ A simple project that combines the basic of web api core 3.0 to connect with a c
 Instead of having the webapi to connect to the database, the connection string is passed to the class library using DI.
 
 This boilerplate uses the case of a simple address service that reads from a database.
+
+Now using Alpine 3.1.6
 
 Check startup.cs:
 
