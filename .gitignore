@@ -1,0 +1,19 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Address.API/obj
+/Address.API/bin/Debug/netcoreapp3.1
+/Address.Business/bin/Debug/netcoreapp3.1
+/Address.Business/obj/Debug/netcoreapp3.1
+/Address.Business/obj
+/Address.Contract/bin/Debug/netcoreapp3.1
+/Address.Contract/obj/Debug/netcoreapp3.1
+/Address.Contract/obj
+/Address.Language/bin/Debug/netcoreapp3.1
+/Address.Language/obj/Debug/netcoreapp3.1
+/Address.Language/obj
+/.vs/Address
+/Address.Persistence/bin/Debug/netcoreapp3.1
+/Address.Persistence/obj/Debug/netcoreapp3.1
+/Address.Persistence/obj
