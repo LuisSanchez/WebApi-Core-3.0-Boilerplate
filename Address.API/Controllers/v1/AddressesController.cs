@@ -27,8 +27,6 @@ namespace Address.API.Controllers.v1
 
             AddressDTO addressDTO = await addressBusiness.Retrieve(id);
 
-            //return (addressDTO == null) ? NotFound() : Ok(addressDTO);
-
             if (addressDTO == null)
             {
                 return NotFound();

@@ -17,12 +17,12 @@ namespace Address.API
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -33,12 +33,30 @@ namespace Address.API
             //    options.UseSqlServer(
             //        Configuration.GetConnectionString("DefaultConnection")));
 
-            services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
+            ConnectionStrings connectionStrings = new ConnectionStrings();
+
+            string dbPassword = Environment.GetEnvironmentVariable("DOCKER_CONN_STRING");
+
+            if (dbPassword == null)
+            {
+                // Used with appsettings.json or secrets
+                //services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
+
+                // secret manager with singleton.
+                connectionStrings.DefaultConnection = Configuration["ConnectionStrings:DefaultConnection"];
+            }
+            else
+            {
+                connectionStrings.DefaultConnection = dbPassword;
+            }
 
             services.AddControllers();
 
             // to access the context 
             services.AddHttpContextAccessor();
+
+            // Conn string as singleton.
+            services.AddSingleton<ConnectionStrings>(connectionStrings);
 
             // Register the class that reads the DB into the DI framework
             services.AddTransient<IAddressBusiness, AddressBusiness>();

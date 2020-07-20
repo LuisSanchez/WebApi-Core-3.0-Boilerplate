@@ -18,9 +18,17 @@ namespace Address.Business
         private readonly ConnectionStrings dbSettings;
         private readonly AddressOperations addressOperations;
 
-        public AddressBusiness(IOptions<ConnectionStrings> dbOptions)
+        // Using IConfiguration with connection strings
+        //public AddressBusiness(IOptions<ConnectionStrings> dbOptions)
+        //{
+        //    this.dbSettings = dbOptions.Value;
+        //    this.addressOperations = new AddressOperations(this.dbSettings.DefaultConnection);
+        //}
+
+        // Using the connection string as a singleton
+        public AddressBusiness(ConnectionStrings connectionStrings)
         {
-            this.dbSettings = dbOptions.Value;
+            this.dbSettings = connectionStrings;
             this.addressOperations = new AddressOperations(this.dbSettings.DefaultConnection);
         }
 

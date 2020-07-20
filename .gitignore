@@ -17,3 +17,7 @@
 /Address.Persistence/bin/Debug/netcoreapp3.1
 /Address.Persistence/obj/Debug/netcoreapp3.1
 /Address.Persistence/obj
+/Address.Contract/bin/Release/netcoreapp3.1
+/Address.Language/bin/Release/netcoreapp3.1
+/Address.Persistence/bin/Release/netcoreapp3.1
+/Address.API/bin/Release/netcoreapp3.1
