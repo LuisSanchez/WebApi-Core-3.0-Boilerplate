@@ -17,6 +17,8 @@ namespace Address.API
 {
     public class Startup
     {
+        readonly string allowedOrigins = "_allowedOrigins";
+
         public IConfiguration Configuration { get; }
 
         public Startup(IConfiguration configuration)
@@ -50,6 +52,13 @@ namespace Address.API
                 connectionStrings.DefaultConnection = dbPassword;
             }
 
+            // For this sandbox, all origins and methods will be allowed.
+            services.AddCors( c =>
+            {
+                c.AddPolicy(name: allowedOrigins, 
+                            options => options.AllowAnyOrigin().AllowAnyMethod()); 
+            });
+
             services.AddControllers();
 
             // to access the context 
@@ -71,6 +80,8 @@ namespace Address.API
             }
 
             app.UseRouting();
+
+            app.UseCors(allowedOrigins);
 
             app.UseAuthorization();
 
