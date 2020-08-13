@@ -4,6 +4,7 @@ using Address.Contract.Mappers;
 using Address.Persistence;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Address.Business
@@ -11,9 +12,11 @@ namespace Address.Business
     public interface IAddressBusiness
     {
         Task<AddressDTO> Retrieve(int id);
+        Task<List<AddressDTO>> Retrieve();
+        Task Add(AddressDTO addressDTO);
     }
 
-    public class AddressBusiness: IAddressBusiness
+    public class AddressBusiness : IAddressBusiness
     {
         private readonly ConnectionStrings dbSettings;
         private readonly AddressOperations addressOperations;
@@ -37,6 +40,19 @@ namespace Address.Business
             Persistence.Model.Address address = await this.addressOperations.Find(id);
 
             return AddressMapper.EntityToDTO(address);
+        }
+
+        public async Task Add(AddressDTO addressDTO)
+        {
+            Persistence.Model.Address address = AddressMapper.DTOToEntity(addressDTO, new Persistence.Model.Address());
+            await this.addressOperations.Add(address);
+        }
+
+        public async Task<List<AddressDTO>> Retrieve()
+        {
+            List<Persistence.Model.Address> addresses = await this.addressOperations.Find();
+
+            return AddressMapper.EntitiesToDTOs(addresses);
         }
     }
 }

@@ -23,6 +23,7 @@ namespace Address.Contract.Mappers
 
             AddressDTO addressDTO = new AddressDTO
             {
+                Id = address.Id,
                 Latitude = address.Latitude,
                 Longitude = address.Longitude,
                 Number = address.Number,
@@ -45,6 +46,7 @@ namespace Address.Contract.Mappers
             
             if (address == null) address = new Persistence.Model.Address();
 
+            address.Id = addressDTO.Id;
             address.Latitude = addressDTO.Latitude;
             address.Longitude = addressDTO.Longitude;
             address.Number = addressDTO.Number;

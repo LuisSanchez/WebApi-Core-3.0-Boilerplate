@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
@@ -35,6 +36,16 @@ namespace Address.API.Controllers.v1
             {
                 return Ok(addressDTO);
             }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] AddressDTO address)
+        {
+            if (address == null) return BadRequest(Language.Resource.AddressNull);
+
+            await addressBusiness.Add(address);
+
+            return Ok(new { });
         }
     }
 }

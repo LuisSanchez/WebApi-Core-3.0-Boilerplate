@@ -15,6 +15,6 @@ namespace Address.API.Controllers.v2
         /// <param name="keyAddress">Address key identifier. // Identificador de la dirección.</param>
         /// <returns>Address object. // Objeto dirección.</returns>
         [HttpGet]
-        public ActionResult Get([FromQuery] string keyAddress) => Ok(new { Message = "get v2 address" });
+        public ActionResult Get([FromQuery] int id) => Ok(new { Message = $"get v2 address and key is {id}" });
     }
 }

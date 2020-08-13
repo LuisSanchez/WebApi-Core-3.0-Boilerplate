@@ -30,5 +30,26 @@ namespace Address.Persistence
 
             return address;
         }
+
+        public async Task<List<Model.Address>> Find()
+        {
+            List<Model.Address> addresses = new List<Model.Address>();
+
+            using (var db = new AddressDBContext(connectionString))
+            {
+                addresses = await db.Addresses.Include(x => x.Country).ToListAsync();
+            }
+
+            return addresses;
+        }
+
+        public async Task Add(Model.Address address)
+        {
+            using (var db = new AddressDBContext(connectionString))
+            {
+                db.Add<Address.Persistence.Model.Address>(address);
+                await db.SaveChangesAsync();
+            }
+        }
     }
 }
