@@ -52,6 +52,7 @@ namespace Address.API
                 connectionStrings.DefaultConnection = dbPassword;
             }
 
+            //TODO: origins must be scoped.
             // For this sandbox, all origins and methods will be allowed.
             services.AddCors( c =>
             {

@@ -27,7 +27,6 @@ namespace Address.API.Controllers.v3
             List<AddressDTO> addressDTO = await addressBusiness.Retrieve();
 
             return addressDTO.Any() ? Ok(addressDTO) : Ok(new { });
-
         }
     }
 }

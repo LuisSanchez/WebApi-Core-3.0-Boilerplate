@@ -28,7 +28,7 @@ namespace Address.Business
         //    this.addressOperations = new AddressOperations(this.dbSettings.DefaultConnection);
         //}
 
-        // Using the connection string as a singleton
+        // Using the connection string as a SINGLETON
         public AddressBusiness(ConnectionStrings connectionStrings)
         {
             this.dbSettings = connectionStrings;
