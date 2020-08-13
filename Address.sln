@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Address.Contract", "Address
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Address.API", "Address.API\Address.API.csproj", "{BE1413A9-2B16-4047-8CE1-4F8652E93B4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Address.Business", "Address.Business\Address.Business.csproj", "{60FA60DE-40AD-4987-AB79-8B02550708DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Address.Business", "Address.Business\Address.Business.csproj", "{60FA60DE-40AD-4987-AB79-8B02550708DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
