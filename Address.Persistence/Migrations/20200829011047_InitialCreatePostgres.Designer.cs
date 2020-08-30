@@ -3,46 +3,48 @@ using System;
 using Address.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Address.Persistence.Migrations
 {
     [DbContext(typeof(AddressDBContext))]
-    partial class AddressContextModelSnapshot : ModelSnapshot
+    [Migration("20200829011047_InitialCreatePostgres")]
+    partial class InitialCreatePostgres
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.6")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
+                .HasAnnotation("ProductVersion", "3.1.7")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("Address.Persistence.Model.Address", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int?>("CountryId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Latitude")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Longitude")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Number")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Street")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -55,14 +57,14 @@ namespace Address.Persistence.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int>("CountryCode")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -73,17 +75,17 @@ namespace Address.Persistence.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int?>("AddressId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Number")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

@@ -37,7 +37,7 @@ namespace Address.API
 
             ConnectionStrings connectionStrings = new ConnectionStrings();
 
-            string dbPassword = Environment.GetEnvironmentVariable("DOCKER_CONN_STRING");
+            string dbPassword = Environment.GetEnvironmentVariable("CONN_STRING_ADDRESS_WEBAPI");
 
             if (dbPassword == null)
             {
