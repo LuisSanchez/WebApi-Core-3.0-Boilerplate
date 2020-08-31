@@ -6,7 +6,6 @@ namespace Address.API.Controllers.v1
 {
     [ApiController]
     [GlobalExceptionFilter]
-    [EnableCors]
     public class BaseController : ControllerBase
     {
         /// <summary>

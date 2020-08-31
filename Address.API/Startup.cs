@@ -17,7 +17,8 @@ namespace Address.API
 {
     public class Startup
     {
-        readonly string allowedOrigins = "_allowedOrigins";
+        readonly string AllowedOrigins = "_allowedOrigins";
+        readonly string[] origins = { "https://luissanchez.github.io" };
 
         public IConfiguration Configuration { get; }
 
@@ -52,12 +53,16 @@ namespace Address.API
                 connectionStrings.DefaultConnection = dbPassword;
             }
 
-            //TODO: origins must be scoped.
-            // For this sandbox, all origins and methods will be allowed.
-            services.AddCors( c =>
+            // For this sandbox, github origin and all methods will be allowed.
+            services.AddCors(options =>
             {
-                c.AddPolicy(name: allowedOrigins, 
-                            options => options.AllowAnyOrigin().AllowAnyMethod()); 
+                options.AddPolicy(AllowedOrigins,
+                    builder =>
+                    {
+                        builder.WithOrigins(origins)
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+                    });
             });
 
             services.AddControllers();
@@ -82,7 +87,7 @@ namespace Address.API
 
             app.UseRouting();
 
-            app.UseCors(allowedOrigins);
+            app.UseCors(AllowedOrigins);
 
             app.UseAuthorization();
 
