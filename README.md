@@ -1,6 +1,6 @@
-# WebApi-Core-3.1-Boilerplate
+# WebAPI-Core-3.1-Boilerplate
 
-Simple C# webapi boilerplate with sql server connection.
+Simple C# WebAPI Core with db connection (SQL Server and Postgres.
 
 A simple project that combines the basic of web api core 3.0 to connect with a class library project that connects to a sql server data base example. Using EF Core, migrations, code first, DI.
 
