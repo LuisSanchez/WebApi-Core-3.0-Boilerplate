@@ -1,4 +1,4 @@
-# WebAPI-Core-3.1-Boilerplate
+# WebAPI-Core-3.1-Sandbox
 
 Simple C# WebAPI Core with db connection (SQL Server and Postgres.
 
